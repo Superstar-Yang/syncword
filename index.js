@@ -1,9 +1,23 @@
-//引入koa组件库
-const Koa = require('koa');
-//创建Koa实例对象
-const app = new Koa();
+const app = require('./koa')
 //引入conf组件
-const conf = require('./config')
+const conf = require('./config');
+//引入bodyparser中间件
+const bodyParser = require('koa-bodyParser')
+//引入koa-views配置中间件
+//当我们配置ejs模板引擎的时候
+// 配置的代码一定要放在router配置代码之前
+// 这个比较容易被忽略
+const views = require('koa-views');
+//使用中间件
+app.use(bodyParser())
+//使用模板引擎
+app.use(views('views', {
+    map: {
+    html:'ejs'
+    }
+}))
+//引入路由器
+const router = require('./router');
 app.use(ctx => {
     ctx.body = 'hello Syncword';
 })
