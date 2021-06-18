@@ -24,7 +24,19 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript">
         function getEmailCode() {
+            let email = document.getElementById('email');
             console.log('点击了获取验证码按钮')
+            axios.get('/email/code', {
+                params: {
+                    email: email.value,
+                }
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
         function register() {
             console.log('点击了注册按钮');
