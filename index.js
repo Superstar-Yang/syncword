@@ -3,6 +3,8 @@ const app = require('./koa')
 const conf = require('./config');
 //引入bodyparser中间件
 const bodyParser = require('koa-bodyParser')
+//引入mongodb数据库组件
+const db= require('./db')
 //引入koa-views配置中间件
 //当我们配置ejs模板引擎的时候
 // 配置的代码一定要放在router配置代码之前
